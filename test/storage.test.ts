@@ -13,9 +13,11 @@ test('test storage', () => {
 
   // 设置缓存
   localCache.setCache('token', 'coder-king-3')
+  const token: string = localCache.getCache('token')
   localCache.setCache(KING_INFO_KEY, KING_INFO_VALUE)
   let kingInfo: typeof KING_INFO_VALUE = localCache.getCache(KING_INFO_KEY)
   expect(!!kingInfo).toBe(true)
+  expect(token).toEqual('coder-king-3')
 
   // 是否更改成功
   localCache.updateCache(KING_INFO_KEY, 'age', 20)

@@ -1,4 +1,4 @@
-import { CacheType, isObject } from './util'
+import { CacheType, isObject, isJsonString } from './util'
 
 /** StorageCache Class Implemented Based on the Storage API */
 class StorageCache {
@@ -22,7 +22,10 @@ class StorageCache {
    */
   getCache(key: string) {
     const value: any = this.storage.getItem(key)
-    return value ? JSON.parse(value) : null
+
+    if (!value) return null
+
+    return isJsonString(value) ? JSON.parse(value) : value
   }
 
   /**
