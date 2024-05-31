@@ -32,7 +32,9 @@ class StorageCache {
    * @param {any} value
    */
   setCache(key: string, value: any) {
-    this.storage.setItem(key, JSON.stringify(value))
+    const cacheValue = isObject(value) ? JSON.stringify(value) : value
+
+    this.storage.setItem(key, cacheValue)
   }
 
   /**
